@@ -1,8 +1,8 @@
 module NeonApi
   module GeneratePaymentSlipToPayer
     URL = 'V1/PaymentSlip/GeneratePaymentSlipToPayer'
-    def self.create(bank_acc_id, name, cpf, email, address, number, complement, zipcode, city, state, country)
-      NeonApi.client.send_request(payload(bank_acc_id, name, cpf, email, address, number, complement, zipcode, city, state, country), URL)
+    def self.create(bank_account, payer_id, cpf, due_date, value, instructions = [])
+      NeonApi.client.send_request(payload(bank_account, payer_id, cpf, due_date, value, instructions = []), URL)
     end
 
     def self.payload(bank_account, payer_id, cpf, due_date, value, instructions = [])
