@@ -44,7 +44,9 @@ module NeonApi
 
     def send_request(object, url)
 
-      authenticate if time_klass.now > expire_time
+      # authenticate if time_klass.now > expire_time
+
+      authenticate
 
       request = begin
         RestClient::Request.execute(method: :post, url: base_url + url,
