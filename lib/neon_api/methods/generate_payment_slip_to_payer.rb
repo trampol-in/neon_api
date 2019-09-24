@@ -7,7 +7,7 @@ module NeonApi
 
     def self.payload(bank_account, payer_id, cpf, due_date, value, instructions = [])
       {
-          "ClientId": NeonApi.client.client_id,
+          "ClientID": NeonApi.client.client_id,
           "BankAccountId": bank_account,
           "PayerId": payer_id,
           "CPF": cpf,
