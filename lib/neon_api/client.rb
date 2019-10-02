@@ -47,6 +47,7 @@ module NeonApi
         return OpenSSL::SSL::VERIFY_NONE
       else
         return OpenSSL::SSL::VERIFY_PEER
+      end
     end
 
     def send_request(object, url)
