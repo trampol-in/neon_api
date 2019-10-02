@@ -30,7 +30,7 @@ module NeonApi
 
       request = begin
         RestClient::Request.execute(method: :post, url: "#{base_url}/V1/Client/Authentication",
-                                    payload: { "Data": encrypted_payload(authentication: true) }, headers: auth_headers)
+                                    payload: { "Data": encrypted_payload(authentication: true) }, headers: auth_headers, verify_ssl: verify_ssl)
       rescue RestClient::ExceptionWithResponse => err
         err.response
       end
@@ -40,6 +40,13 @@ module NeonApi
       else
         raise request
       end
+    end
+
+    def verify_ssl
+      if @environment == :development
+        return OpenSSL::SSL::VERIFY_NONE
+      else
+        return OpenSSL::SSL::VERIFY_PEER
     end
 
     def send_request(object, url)
